@@ -9,10 +9,10 @@ Intel Core i3-8100 CPU 3.60GHz (Coffee Lake), 1 CPU, 4 logical and 4 physical co
 
 
 ```
-| Method |                Job |            Runtime |      Mean |    Error |   StdDev | Ratio |
-|------- |------------------- |------------------- |----------:|---------:|---------:|------:|
-|   Rows |           .NET 5.0 |           .NET 5.0 |  54.84 ms | 1.416 ms | 4.063 ms |  1.00 |
-|   Cols |           .NET 5.0 |           .NET 5.0 | 413.02 ms | 5.967 ms | 5.581 ms |  7.31 |
-|        |                    |                    |           |          |          |       |
-|   Rows | .NET Framework 4.8 | .NET Framework 4.8 |  86.67 ms | 1.698 ms | 2.790 ms |  1.00 |
-|   Cols | .NET Framework 4.8 | .NET Framework 4.8 | 422.03 ms | 2.312 ms | 1.931 ms |  4.88 |
+| Method |                Job |            Runtime |      Mean |    Error |   StdDev | Ratio | RatioSD |
+|------- |------------------- |------------------- |----------:|---------:|---------:|------:|--------:|
+|   Rows |           .NET 5.0 |           .NET 5.0 |  16.75 ms | 0.030 ms | 0.026 ms |  1.00 |    0.00 |
+|   Cols |           .NET 5.0 |           .NET 5.0 | 385.34 ms | 1.470 ms | 1.147 ms | 23.00 |    0.08 |
+|        |                    |                    |           |          |          |       |         |
+|   Rows | .NET Framework 4.8 | .NET Framework 4.8 |  16.89 ms | 0.045 ms | 0.040 ms |  1.00 |    0.00 |
+|   Cols | .NET Framework 4.8 | .NET Framework 4.8 | 388.03 ms | 2.875 ms | 2.689 ms | 22.99 |    0.17 |
