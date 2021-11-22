@@ -1,27 +1,27 @@
 ``` ini
 
-BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19043.1348 (21H1/May2021Update)
-Intel Core i3-8100 CPU 3.60GHz (Coffee Lake), 1 CPU, 4 logical and 4 physical cores
-.NET SDK=6.0.100-rc.2.21505.57
-  [Host]             : .NET 5.0.12 (5.0.1221.52207), X64 RyuJIT
-  .NET 5.0           : .NET 5.0.12 (5.0.1221.52207), X64 RyuJIT
-  .NET Framework 4.8 : .NET Framework 4.8 (4.8.4420.0), X64 RyuJIT
+BenchmarkDotNet=v0.13.1, OS=Windows 10.0.22000
+Intel Core i7-10750H CPU 2.60GHz, 1 CPU, 12 logical and 6 physical cores
+.NET SDK=6.0.100
+  [Host]             : .NET 6.0.0 (6.0.21.52210), X64 RyuJIT
+  .NET 6.0           : .NET 6.0.0 (6.0.21.52210), X64 RyuJIT
+  .NET Framework 4.8 : .NET Framework 4.8 (4.8.4161.0), X64 RyuJIT
 
 
 ```
-|         Method |                Job |            Runtime |      Mean |     Error |    StdDev | Code Size |
-|--------------- |------------------- |------------------- |----------:|----------:|----------:|----------:|
-|  Indexer_Class |           .NET 5.0 |           .NET 5.0 | 0.0000 ns | 0.0000 ns | 0.0000 ns |      29 B |
-|   Getter_Class |           .NET 5.0 |           .NET 5.0 | 0.0000 ns | 0.0000 ns | 0.0000 ns |       8 B |
-| Indexer_Struct |           .NET 5.0 |           .NET 5.0 | 0.0000 ns | 0.0000 ns | 0.0000 ns |      28 B |
-|  Getter_Struct |           .NET 5.0 |           .NET 5.0 | 0.0000 ns | 0.0000 ns | 0.0000 ns |       7 B |
-|  Indexer_Class | .NET Framework 4.8 | .NET Framework 4.8 | 0.3174 ns | 0.0092 ns | 0.0086 ns |      29 B |
-|   Getter_Class | .NET Framework 4.8 | .NET Framework 4.8 | 0.0137 ns | 0.0009 ns | 0.0008 ns |       8 B |
-| Indexer_Struct | .NET Framework 4.8 | .NET Framework 4.8 | 0.3126 ns | 0.0017 ns | 0.0015 ns |      28 B |
-|  Getter_Struct | .NET Framework 4.8 | .NET Framework 4.8 | 0.0082 ns | 0.0031 ns | 0.0029 ns |       7 B |
+|         Method |                Job |            Runtime |      Mean |     Error |    StdDev |    Median | Code Size |
+|--------------- |------------------- |------------------- |----------:|----------:|----------:|----------:|----------:|
+|  Indexer_Class |           .NET 6.0 |           .NET 6.0 | 0.0000 ns | 0.0000 ns | 0.0000 ns | 0.0000 ns |      29 B |
+|   Getter_Class |           .NET 6.0 |           .NET 6.0 | 0.0012 ns | 0.0020 ns | 0.0018 ns | 0.0000 ns |       8 B |
+| Indexer_Struct |           .NET 6.0 |           .NET 6.0 | 0.0000 ns | 0.0000 ns | 0.0000 ns | 0.0000 ns |      28 B |
+|  Getter_Struct |           .NET 6.0 |           .NET 6.0 | 0.0000 ns | 0.0000 ns | 0.0000 ns | 0.0000 ns |       7 B |
+|  Indexer_Class | .NET Framework 4.8 | .NET Framework 4.8 | 0.2072 ns | 0.0718 ns | 0.2116 ns | 0.0401 ns |      29 B |
+|   Getter_Class | .NET Framework 4.8 | .NET Framework 4.8 | 0.0818 ns | 0.0201 ns | 0.0215 ns | 0.0839 ns |       8 B |
+| Indexer_Struct | .NET Framework 4.8 | .NET Framework 4.8 | 0.3134 ns | 0.0031 ns | 0.0029 ns | 0.3139 ns |      28 B |
+|  Getter_Struct | .NET Framework 4.8 | .NET Framework 4.8 | 0.0000 ns | 0.0000 ns | 0.0000 ns | 0.0000 ns |       7 B |
 
 
-## .NET 5.0.12 (5.0.1221.52207), X64 RyuJIT
+## .NET 6.0.0 (6.0.21.52210), X64 RyuJIT
 ```assembly
 ; IndexerGetterBenchmark.IndexerVsGetterBenchmark.Indexer_Class()
        sub       rsp,28
@@ -37,7 +37,7 @@ M00_L00:
 ; Total bytes of code 29
 ```
 
-## .NET 5.0.12 (5.0.1221.52207), X64 RyuJIT
+## .NET 6.0.0 (6.0.21.52210), X64 RyuJIT
 ```assembly
 ; IndexerGetterBenchmark.IndexerVsGetterBenchmark.Getter_Class()
        mov       rax,[rcx+10]
@@ -46,7 +46,7 @@ M00_L00:
 ; Total bytes of code 8
 ```
 
-## .NET 5.0.12 (5.0.1221.52207), X64 RyuJIT
+## .NET 6.0.0 (6.0.21.52210), X64 RyuJIT
 ```assembly
 ; IndexerGetterBenchmark.IndexerVsGetterBenchmark.Indexer_Struct()
        sub       rsp,28
@@ -62,7 +62,7 @@ M00_L00:
 ; Total bytes of code 28
 ```
 
-## .NET 5.0.12 (5.0.1221.52207), X64 RyuJIT
+## .NET 6.0.0 (6.0.21.52210), X64 RyuJIT
 ```assembly
 ; IndexerGetterBenchmark.IndexerVsGetterBenchmark.Getter_Struct()
        add       rcx,20
@@ -71,7 +71,7 @@ M00_L00:
 ; Total bytes of code 7
 ```
 
-## .NET Framework 4.8 (4.8.4420.0), X64 RyuJIT
+## .NET Framework 4.8 (4.8.4161.0), X64 RyuJIT
 ```assembly
 ; IndexerGetterBenchmark.IndexerVsGetterBenchmark.Indexer_Class()
        sub       rsp,28
@@ -87,7 +87,7 @@ M00_L00:
 ; Total bytes of code 29
 ```
 
-## .NET Framework 4.8 (4.8.4420.0), X64 RyuJIT
+## .NET Framework 4.8 (4.8.4161.0), X64 RyuJIT
 ```assembly
 ; IndexerGetterBenchmark.IndexerVsGetterBenchmark.Getter_Class()
        mov       rax,[rcx+10]
@@ -96,7 +96,7 @@ M00_L00:
 ; Total bytes of code 8
 ```
 
-## .NET Framework 4.8 (4.8.4420.0), X64 RyuJIT
+## .NET Framework 4.8 (4.8.4161.0), X64 RyuJIT
 ```assembly
 ; IndexerGetterBenchmark.IndexerVsGetterBenchmark.Indexer_Struct()
        sub       rsp,28
@@ -112,7 +112,7 @@ M00_L00:
 ; Total bytes of code 28
 ```
 
-## .NET Framework 4.8 (4.8.4420.0), X64 RyuJIT
+## .NET Framework 4.8 (4.8.4161.0), X64 RyuJIT
 ```assembly
 ; IndexerGetterBenchmark.IndexerVsGetterBenchmark.Getter_Struct()
        lea       rax,[rcx+20]

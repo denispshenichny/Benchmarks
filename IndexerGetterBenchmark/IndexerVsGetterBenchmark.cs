@@ -5,7 +5,7 @@ namespace IndexerGetterBenchmark
 {
     [DisassemblyDiagnoser(printSource: true)]
     [SimpleJob(RuntimeMoniker.Net48)]
-    [SimpleJob(RuntimeMoniker.Net50)]
+    [SimpleJob(RuntimeMoniker.Net60)]
     public class IndexerVsGetterBenchmark
     {
         private Class[] _classArray;
