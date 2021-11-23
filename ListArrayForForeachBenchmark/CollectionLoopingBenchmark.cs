@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Jobs;
 
 namespace ListArrayForForeachBenchmark
 {
     [SimpleJob(RuntimeMoniker.Net48)]
     [SimpleJob(RuntimeMoniker.Net50)]
-    [MemoryDiagnoser]
+    [SimpleJob(RuntimeMoniker.Net60)]
+    [GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByJob)]
+    [DisassemblyDiagnoser(printSource: true)]
     public class CollectionLoopingBenchmark
     {
         private const int Size = 5_000_000;
@@ -14,8 +17,7 @@ namespace ListArrayForForeachBenchmark
         private int[] _array;
         private List<int> _list;
 
-        [GlobalSetup]
-        public void Setup()
+        public IEnumerable<int[]> Arrays()
         {
             _array = new int[Size];
             for (int i = 0; i < Size; i++)
@@ -23,30 +25,38 @@ namespace ListArrayForForeachBenchmark
                 _array[i] = i;
             }
 
+            yield return _array;
+        }
+        public IEnumerable<List<int>> Lists()
+        {
             _list = new List<int>(Size);
             for (int i = 0; i < Size; i++)
             {
                 _list.Add(i);
             }
+
+            yield return _list;
         }
 
-        [Benchmark(Baseline = true)]
-        public long ForLoopArray()
+        [Benchmark]
+        [ArgumentsSource(nameof(Arrays))]
+        public long ForLoopArray(int[] array)
         {
             long sum = 0;
-            for (int i = 0; i < Size; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                sum += _array[i];
+                sum += array[i];
             }
 
             return sum;
         }
 
         [Benchmark]
-        public long ForeachLoopArray()
+        [ArgumentsSource(nameof(Arrays))]
+        public long ForeachLoopArray(int[] array)
         {
             long sum = 0;
-            foreach (int item in _array)
+            foreach (int item in array)
             {
                 sum += item;
             }
@@ -55,22 +65,24 @@ namespace ListArrayForForeachBenchmark
         }
 
         [Benchmark]
-        public long ForLoopList()
+        [ArgumentsSource(nameof(Lists))]
+        public long ForLoopList(List<int> list)
         {
             long sum = 0;
-            for (int i = 0; i < Size; i++)
+            for (int i = 0; i < list.Count; i++)
             {
-                sum += _list[i];
+                sum += list[i];
             }
 
             return sum;
         }
 
         [Benchmark]
-        public long ForeachLoopList()
+        [ArgumentsSource(nameof(Lists))]
+        public long ForeachLoopList(List<int> list)
         {
             long sum = 0;
-            foreach (int item in _list)
+            foreach (int item in list)
             {
                 sum += item;
             }

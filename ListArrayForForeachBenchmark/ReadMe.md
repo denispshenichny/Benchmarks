@@ -1,22 +1,28 @@
 ``` ini
 
-BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19043.1288 (21H1/May2021Update)
-Intel Core i3-8100 CPU 3.60GHz (Coffee Lake), 1 CPU, 4 logical and 4 physical cores
-.NET SDK=6.0.100-rc.2.21505.57
-  [Host]             : .NET 5.0.11 (5.0.1121.47308), X64 RyuJIT
-  .NET 5.0           : .NET 5.0.11 (5.0.1121.47308), X64 RyuJIT
-  .NET Framework 4.8 : .NET Framework 4.8 (4.8.4420.0), X64 RyuJIT
+BenchmarkDotNet=v0.13.1, OS=Windows 10.0.22000
+Intel Core i7-10750H CPU 2.60GHz, 1 CPU, 12 logical and 6 physical cores
+.NET SDK=6.0.100
+  [Host]             : .NET 6.0.0 (6.0.21.52210), X64 RyuJIT
+  .NET 5.0           : .NET 5.0.12 (5.0.1221.52207), X64 RyuJIT
+  .NET 6.0           : .NET 6.0.0 (6.0.21.52210), X64 RyuJIT
+  .NET Framework 4.8 : .NET Framework 4.8 (4.8.4161.0), X64 RyuJIT
 
 
 ```
-|           Method |                Job |            Runtime |      Mean |     Error |    StdDev | Ratio | Allocated |
-|----------------- |------------------- |------------------- |----------:|----------:|----------:|------:|----------:|
-|     ForLoopArray |           .NET 5.0 |           .NET 5.0 |  3.027 ms | 0.0032 ms | 0.0027 ms |  1.00 |         - |
-| ForeachLoopArray |           .NET 5.0 |           .NET 5.0 |  2.684 ms | 0.0025 ms | 0.0021 ms |  0.89 |         - |
-|      ForLoopList |           .NET 5.0 |           .NET 5.0 |  3.839 ms | 0.0024 ms | 0.0022 ms |  1.27 |         - |
-|  ForeachLoopList |           .NET 5.0 |           .NET 5.0 | 10.199 ms | 0.0049 ms | 0.0039 ms |  3.37 |         - |
-|                  |                    |                    |           |           |           |       |           |
-|     ForLoopArray | .NET Framework 4.8 | .NET Framework 4.8 |  3.039 ms | 0.0111 ms | 0.0104 ms |  1.00 |         - |
-| ForeachLoopArray | .NET Framework 4.8 | .NET Framework 4.8 |  2.687 ms | 0.0095 ms | 0.0075 ms |  0.88 |         - |
-|      ForLoopList | .NET Framework 4.8 | .NET Framework 4.8 |  4.308 ms | 0.0114 ms | 0.0101 ms |  1.42 |         - |
-|  ForeachLoopList | .NET Framework 4.8 | .NET Framework 4.8 | 10.176 ms | 0.0089 ms | 0.0083 ms |  3.35 |         - |
+|           Method |                Job |            Runtime |      Mean |     Error |    StdDev | Code Size |
+|----------------- |------------------- |------------------- |----------:|----------:|----------:|----------:|
+|      ForLoopList |           .NET 5.0 |           .NET 5.0 |  3.666 ms | 0.0103 ms | 0.0091 ms |      70 B |
+|  ForeachLoopList |           .NET 5.0 |           .NET 5.0 | 11.485 ms | 0.0050 ms | 0.0047 ms |     163 B |
+|     ForLoopArray |           .NET 5.0 |           .NET 5.0 |  3.191 ms | 0.0098 ms | 0.0091 ms |      35 B |
+| ForeachLoopArray |           .NET 5.0 |           .NET 5.0 |  3.185 ms | 0.0063 ms | 0.0056 ms |      35 B |
+|                  |                    |                    |           |           |           |           |
+|      ForLoopList |           .NET 6.0 |           .NET 6.0 |  3.659 ms | 0.0032 ms | 0.0025 ms |      70 B |
+|  ForeachLoopList |           .NET 6.0 |           .NET 6.0 |  5.945 ms | 0.0274 ms | 0.0242 ms |      98 B |
+|     ForLoopArray |           .NET 6.0 |           .NET 6.0 |  3.181 ms | 0.0099 ms | 0.0093 ms |      38 B |
+| ForeachLoopArray |           .NET 6.0 |           .NET 6.0 |  3.178 ms | 0.0115 ms | 0.0108 ms |      38 B |
+|                  |                    |                    |           |           |           |           |
+|      ForLoopList | .NET Framework 4.8 | .NET Framework 4.8 |  4.563 ms | 0.0191 ms | 0.0159 ms |     164 B |
+|  ForeachLoopList | .NET Framework 4.8 | .NET Framework 4.8 | 10.463 ms | 0.0121 ms | 0.0108 ms |     179 B |
+|     ForLoopArray | .NET Framework 4.8 | .NET Framework 4.8 |  3.272 ms | 0.0098 ms | 0.0087 ms |      35 B |
+| ForeachLoopArray | .NET Framework 4.8 | .NET Framework 4.8 |  3.282 ms | 0.0163 ms | 0.0144 ms |      35 B |
