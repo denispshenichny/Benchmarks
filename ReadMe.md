@@ -9,5 +9,5 @@ The following list is a list of questions "what is the best option to use in ter
 - [What is the impact the finalizable objects introduce?](https://github.com/denispshenichny/Benchmarks/tree/master/FinalizableBenchmark)
 - [What is the fastest way to check whether the Flags enum has a certain flag?](https://github.com/denispshenichny/Benchmarks/tree/master/FlagsEnumBenchmark)
 - [Why do I have to implement the IEquatable interface on structures used in standard containers?](https://github.com/denispshenichny/Benchmarks/tree/master/IEquatableBenchmark)
-- [What is faster: get property value or get indexer value?]()https://github.com/denispshenichny/Benchmarks/tree/master/IndexerGetterBenchmark
+- [What is faster: get property value or get indexer value?](https://github.com/denispshenichny/Benchmarks/tree/master/IndexerGetterBenchmark)
 - [Which collection is faster for traversing: List or array? And what is the preferred loop for traversing: for or foreach?](https://github.com/denispshenichny/Benchmarks/tree/master/ListArrayForForeachBenchmark)
