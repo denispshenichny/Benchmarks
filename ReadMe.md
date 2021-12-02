@@ -6,6 +6,7 @@ Sometimes there are different options of writing C# code constructions are avail
 The following list is a list of questions "what is the best option to use in terms of performance?" I was asked and links to the corresponding answers:
 
 - [How to traverse matrix: by rows or by columns?](https://github.com/denispshenichny/Benchmarks/tree/master/BenchmarkMatrix)
+- [What is the most optimal way of casting object to the descendant class?](https://github.com/denispshenichny/Benchmarks/tree/master/CastBenchmark)
 - [What is the impact the finalizable objects introduce?](https://github.com/denispshenichny/Benchmarks/tree/master/FinalizableBenchmark)
 - [What is the fastest way to check whether the Flags enum has a certain flag?](https://github.com/denispshenichny/Benchmarks/tree/master/FlagsEnumBenchmark)
 - [Why do I have to implement the IEquatable interface on structures used in standard containers?](https://github.com/denispshenichny/Benchmarks/tree/master/IEquatableBenchmark)
